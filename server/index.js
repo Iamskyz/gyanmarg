@@ -23,6 +23,11 @@ app.get("/", (req, res) => {
     message: "GyanMarg Backend is running 🚀",
   });
 });
+// Handle preflight requests
+app.options("*", (req, res) => {
+  res.sendStatus(200);
+});
+
 
 //routes
 app.use("/api/auth", authRoutes);
