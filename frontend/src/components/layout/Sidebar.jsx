@@ -3,7 +3,7 @@ import { useState, useRef, useEffect } from "react";
 import { useAuth } from "../../context/AuthContext";
 import { useLanguage } from "../../context/LanguageContext";
 
-export default function Sidebar() {
+export default function Sidebar({ mobileOpen, onClose }) {
   const { user, logout } = useAuth();
   const { t, lang, setLanguage } = useLanguage();
   const navigate = useNavigate();
@@ -38,19 +38,21 @@ export default function Sidebar() {
 
   const links = user?.role === "admin" ? adminLinks : studentLinks;
 
-  const handleLogout = () => {
-    logout();
-    navigate("/login");
+  const handleNav = (to) => {
+    navigate(to);
+    onClose?.();
+    setShowSettings(false);
   };
 
-  return (
-    <aside className="w-56 hidden lg:flex flex-col border-r border-white/10 bg-black py-4 px-3 shrink-0">
+  const sidebarContent = (
+    <>
       {/* Nav Links */}
       <nav className="flex flex-col gap-0.5">
         {links.map(({ to, label, icon }) => (
           <NavLink
             key={to}
             to={to}
+            onClick={() => onClose?.()}
             className={({ isActive }) =>
               `flex items-center gap-2.5 px-3 py-2.5 rounded text-[13px] transition-all ${
                 isActive
@@ -94,7 +96,7 @@ export default function Sidebar() {
               <div className="p-2">
                 {user?.role !== "admin" && (
                   <button
-                    onClick={() => { navigate("/profile"); setShowSettings(false); }}
+                    onClick={() => handleNav("/profile")}
                     className="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-white/80 hover:bg-white/5 transition-colors text-left"
                   >
                     <span className="material-symbols-outlined text-lg">person</span>
@@ -110,7 +112,7 @@ export default function Sidebar() {
                 </button>
                 {user?.role !== "admin" && (
                   <button
-                    onClick={() => { navigate("/feedback"); setShowSettings(false); }}
+                    onClick={() => handleNav("/feedback")}
                     className="w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm text-white/80 hover:bg-white/5 transition-colors text-left"
                   >
                     <span className="material-symbols-outlined text-lg">rate_review</span>
@@ -145,6 +147,29 @@ export default function Sidebar() {
           )}
         </div>
       </div>
-    </aside>
+    </>
+  );
+
+  return (
+    <>
+      {/* Desktop Sidebar */}
+      <aside className="w-56 hidden lg:flex flex-col border-r border-white/10 bg-black py-4 px-3 shrink-0">
+        {sidebarContent}
+      </aside>
+
+      {/* Mobile Sidebar Overlay */}
+      {mobileOpen && (
+        <div className="fixed inset-0 z-[200] lg:hidden">
+          <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" onClick={onClose}></div>
+          <aside className="absolute left-0 top-0 h-full w-64 bg-black border-r border-white/10 py-4 px-3 flex flex-col animate-slide-in-left">
+            {/* Close button */}
+            <button onClick={onClose} className="self-end mb-3 size-8 rounded-lg border border-white/10 flex items-center justify-center text-white/60 hover:text-white hover:bg-white/5 transition-all">
+              <span className="material-symbols-outlined text-lg">close</span>
+            </button>
+            {sidebarContent}
+          </aside>
+        </div>
+      )}
+    </>
   );
 }

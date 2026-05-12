@@ -11,6 +11,7 @@ export default function AppLayout() {
   const navigate = useNavigate();
   const [showNotifications, setShowNotifications] = useState(false);
   const [showSettings, setShowSettings] = useState(false);
+  const [mobileSidebar, setMobileSidebar] = useState(false);
   const [notifications, setNotifications] = useState([]);
   const notifRef = useRef(null);
   const settingsRef = useRef(null);
@@ -52,12 +53,19 @@ export default function AppLayout() {
   return (
     <div className="flex h-screen w-full flex-col overflow-hidden">
       {/* Header - Only logo, language, bell, gear */}
-      <header className="flex items-center justify-between border-b border-white/10 px-5 py-2.5 bg-black/90 backdrop-blur-md shrink-0 z-50">
-        <div className="flex items-center gap-3 text-white">
+      <header className="flex items-center justify-between border-b border-white/10 px-4 sm:px-5 py-2.5 bg-black/90 backdrop-blur-md shrink-0 z-50">
+        <div className="flex items-center gap-2 sm:gap-3 text-white">
+          {/* Mobile hamburger */}
+          <button
+            onClick={() => setMobileSidebar(true)}
+            className="lg:hidden flex size-9 items-center justify-center rounded border border-white/20 bg-white/5 text-white hover:bg-white/10 transition-colors"
+          >
+            <span className="material-symbols-outlined text-xl">menu</span>
+          </button>
           <div className="size-8 flex items-center justify-center bg-white/10 rounded border border-white/20">
             <span className="material-symbols-outlined text-white text-xl">school</span>
           </div>
-          <h2 className="text-white text-lg font-bold tracking-tight">GyanMarg</h2>
+          <h2 className="text-white text-lg font-bold tracking-tight hidden sm:block">GyanMarg</h2>
         </div>
 
         <div className="flex items-center gap-1.5">
@@ -136,8 +144,8 @@ export default function AppLayout() {
 
       {/* Body */}
       <div className="flex flex-1 overflow-hidden">
-        <Sidebar />
-        <main className="flex-1 overflow-y-auto bg-black p-5 lg:p-8">
+        <Sidebar mobileOpen={mobileSidebar} onClose={() => setMobileSidebar(false)} />
+        <main className="flex-1 overflow-y-auto bg-black p-4 sm:p-5 lg:p-8">
           <div className="max-w-[1200px] mx-auto">
             <Outlet />
           </div>
