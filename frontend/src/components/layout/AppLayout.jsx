@@ -107,7 +107,7 @@ export default function AppLayout() {
 
       {/* Notifications Dropdown */}
       {showNotifications && (
-        <div ref={notifRef} className="absolute top-14 right-12 z-[100] w-80 bg-[#111113] border border-white/10 rounded-xl shadow-2xl shadow-black/50 overflow-hidden">
+        <div ref={notifRef} className="absolute top-14 right-4 sm:right-12 z-[100] w-[calc(100vw-2rem)] sm:w-80 bg-[#111113] border border-white/10 rounded-xl shadow-2xl shadow-black/50 overflow-hidden">
           <div className="px-4 py-3 border-b border-white/10 flex items-center justify-between">
             <h4 className="text-sm font-bold text-white">Notifications</h4>
             <span className="text-[10px] text-white/40">{notifications.length} recent</span>

@@ -127,7 +127,7 @@ export default function AITutor() {
   const showSuggestions = messages.length === 0 && !loading;
 
   return (
-    <div className="flex flex-col h-[calc(100vh-7rem)]">
+    <div className="flex flex-col h-[calc(100vh-8rem)] sm:h-[calc(100vh-7rem)]">
       {/* Header */}
       <div className="flex items-center justify-between pb-3 border-b border-white/10 shrink-0">
         <div className="flex items-center gap-3">
@@ -164,7 +164,7 @@ export default function AITutor() {
               <h2 className="text-white font-bold text-lg">Hi {user?.name?.split(" ")[0] || "there"}! 👋</h2>
               <p className="text-white/40 text-sm mt-1">What would you like to learn today?</p>
             </div>
-            <div className="grid grid-cols-2 gap-3 w-full max-w-md">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 w-full max-w-md">
               {SUGGESTIONS.map((s) => (
                 <button
                   key={s.label}

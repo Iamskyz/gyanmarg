@@ -37,20 +37,20 @@ export default function Dashboard() {
             <h1 className="text-2xl lg:text-3xl font-black text-white">{user?.name?.split(" ")[0]} 👋</h1>
             <p className="text-white/50 text-sm mt-1">{t("class")} {user?.grade} • {t("keepUpGreatWork")}</p>
           </div>
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-3 sm:gap-4">
             <div className="text-center">
-              <p className="text-2xl font-black text-white">{user?.xp || 0}</p>
-              <p className="text-[10px] text-white/40 uppercase tracking-wider">{t("totalXP")}</p>
+              <p className="text-xl sm:text-2xl font-black text-white">{user?.xp || 0}</p>
+              <p className="text-[9px] sm:text-[10px] text-white/40 uppercase tracking-wider">{t("totalXP")}</p>
             </div>
             <div className="w-px h-10 bg-white/10" />
             <div className="text-center">
-              <p className="text-2xl font-black text-white">{user?.streak || 0}</p>
-              <p className="text-[10px] text-white/40 uppercase tracking-wider">{t("streak")}</p>
+              <p className="text-xl sm:text-2xl font-black text-white">{user?.streak || 0}</p>
+              <p className="text-[9px] sm:text-[10px] text-white/40 uppercase tracking-wider">{t("streak")}</p>
             </div>
             <div className="w-px h-10 bg-white/10" />
             <div className="text-center">
-              <p className="text-2xl font-black text-white">{user?.level || 1}</p>
-              <p className="text-[10px] text-white/40 uppercase tracking-wider">{t("level")}</p>
+              <p className="text-xl sm:text-2xl font-black text-white">{user?.level || 1}</p>
+              <p className="text-[9px] sm:text-[10px] text-white/40 uppercase tracking-wider">{t("level")}</p>
             </div>
           </div>
         </div>
@@ -66,7 +66,7 @@ export default function Dashboard() {
       </div>
 
       {/* Stats Cards */}
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-3">
+      <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-2 sm:gap-3">
         <div className="bg-white/[0.03] border border-white/[0.08] rounded-xl p-4 flex flex-col gap-2">
           <div className="size-9 rounded-lg bg-blue-500/10 flex items-center justify-center">
             <span className="material-symbols-outlined text-lg text-blue-400">quiz</span>
