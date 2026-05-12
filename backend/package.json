@@ -1,0 +1,38 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js",
+    "seed:class6": "node seeds/class6_complete.js",
+    "seed:class6:odia": "node seeds/class6_complete_odia.js",
+    "seed:math": "node seeds/class6_mathematics.js",
+    "seed:math:odia": "node seeds/class6_mathematics_odia.js",
+    "seed:science": "node seeds/class6_science.js",
+    "seed:science:odia": "node seeds/class6_science_odia.js",
+    "seed:social": "node seeds/class6_social_studies.js",
+    "seed:social:odia": "node seeds/class6_social_studies_odia.js",
+    "seed:english": "node seeds/class6_english.js",
+    "seed:english:odia": "node seeds/class6_english_odia.js",
+    "seed:hindi": "node seeds/class6_hindi.js",
+    "seed:hindi:odia": "node seeds/class6_hindi_odia.js",
+    "seed:odia": "node seeds/class6_odia.js",
+    "seed:all": "node seedAll.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "dependencies": {
+    "bcryptjs": "^3.0.3",
+    "cors": "^2.8.6",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
+    "jsonwebtoken": "^9.0.3",
+    "mongoose": "^9.6.1",
+    "node-fetch": "^3.3.2",
+    "nodemon": "^3.1.14"
+  }
+}
